@@ -1,0 +1,40 @@
+stageapp_homepage:
+    path:     /
+    defaults: { _controller: StageappBundle:Default:index }
+
+
+
+hello_world:
+    path:    /{_locale}/hello-world/{id}
+    defaults: { _controller: StageappBundle:Advert:index }
+
+
+ajax_header:
+    path:    /{_locale}/ajax-header/{id}
+    defaults: { _controller: StageappBundle:Advert:getAjaxContent }
+
+ajax_footer:
+    path:    /ajax-footer/{id}
+    defaults: { _controller: StageappBundle:Advert:getAjaxFooterContent }
+
+
+
+first_look:
+    path:    /home
+    defaults: { _controller: StageappBundle:Home:home }
+
+save_parametre:
+    path:    /ajax_save_parametre/{header}/{footer}/{firstColor}/{secondColor}
+    defaults: { _controller: StageappBundle:Home:save }
+
+
+
+shop_route:
+    path:   /{_locale}/shop
+    defaults: {_controller: StageappBundle:Front:index}
+
+
+
+produit_detail:
+    path:   /detail/{id}
+    defaults: {_controller: StageappBundle:Front:detail}

@@ -1,0 +1,132 @@
+<header id="header">
+    <div id="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header-top-left">
+                        <ul id="top-links" class="clearfix">
+                            <li><a href="#" title="My Wishlist"><span class="top-icon top-icon-pencil"></span><span class="hide-for-xs">{{ 'header.top.MyWishlist'|trans({}, 'StageappBundle') }}</span></a></li>
+                            <li><a href="{{path('fos_user_profile_show')}}" title="My Account"><span class="top-icon top-icon-user"></span><span class="hide-for-xs">{{ 'header.top.MyAccount'|trans({}, 'StageappBundle') }}</span></a></li>
+                            <li><a href="cart.html" title="My Cart"><span class="top-icon top-icon-cart"></span><span class="hide-for-xs">{{ 'header.top.MyCart'|trans({}, 'StageappBundle') }}</span></a></li>
+                            <li><a href="checkout.html" title="Checkout"><span class="top-icon top-icon-check"></span><span class="hide-for-xs">{{ 'header.top.Checkout'|trans({}, 'StageappBundle') }}</span></a></li>
+                        </ul>
+                    </div><!-- End .header-top-left -->
+                    <div class="header-top-right">
+                        <div class="dropdown-cart-menu-container pull-right">
+                            <div class="btn-group dropdown-cart">
+                                <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                                    <span class="cart-menu-icon"></span>
+                                    0 item(s) <span class="drop-price">- $0.00</span>
+                                </button>
+
+                                <div class="dropdown-menu dropdown-cart-menu pull-right clearfix" role="menu">
+                                    <p class="dropdown-cart-description">Recently added item(s).</p>
+                                    <ul class="dropdown-cart-product-list">
+
+                                    </ul>
+
+                                    <ul class="dropdown-cart-total">
+                                        <li><span class="dropdown-cart-total-title">Shipping:</span>$7</li>
+                                        <li><span class="dropdown-cart-total-title">Total:</span>$1005<span class="sub-price">.99</span></li>
+                                    </ul><!-- .dropdown-cart-total -->
+                                    <div class="dropdown-cart-action">
+                                        <p><a href="cart.html" class="btn btn-custom-2 btn-block">Cart</a></p>
+                                        <p><a href="checkout.html" class="btn btn-custom btn-block">Checkout</a></p>
+                                    </div><!-- End .dropdown-cart-action -->
+
+                                </div><!-- End .dropdown-cart -->
+                            </div><!-- End .btn-group -->
+                        </div><!-- End .dropdown-cart-menu-container -->
+                        <div class="header-top-dropdowns pull-right">
+                            <div class="btn-group dropdown-money">
+                                <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                                    <span class="hide-for-xs hide-for-sm">US Dollar</span><span class="hide-for-lg show-for-sm">$</span>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="#"><span class="hide-for-xs hide-for-sm">Euro</span><span class="hide-for-lg show-for-sm">&euro;</span></a></li>
+                                    <li><a href="#"><span class="hide-for-xs hide-for-sm">Pound</span><span class="hide-for-lg show-for-sm">&pound;</span></a></li>
+                                </ul>
+                            </div><!-- End .btn-group -->
+                            <div class="btn-group dropdown-language">
+                                {% set langues = app.session.get('langues') %}
+
+                                    {% for langue in langues %}
+                                        {% if langue.loc ==  app.request.get('_locale')  %}
+                                        <button onclick="window.location.href='{{ path(app.session.get('url'), app.session.get('params')|merge({'_locale':  langue.loc     })) }}'" type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                                            <span class="flag-container"><img src="{{ asset('bundles/stageapp/images/'~ langue.name ~'-flag.png')}}" alt="flag of england"></span>
+                                            <span class="hide-for-xs">{{ langue.name}}</span>
+                                        </button>
+                                        {% endif %}
+                                    {% endfor %}
+                                <ul class="dropdown-menu pull-right" role="menu">
+
+                                    {% for langue in langues  %}
+                                        {% if langue.loc != app.request.get('_locale')  %}
+                                            <li><a href="{{ path(app.session.get('url'), app.session.get('params')|merge({'_locale':  langue.loc     })) }}"><span class="sm-separator"><img src="{{ asset('bundles/stageapp/images/'~ langue.name ~'-flag.png') }}" alt="flag of germany"></span><span class="hide-for-xs">{{ langue.name }}</span></a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div><!-- End .btn-group -->
+                        </div><!-- End .header-top-dropdowns -->
+                        <div class="header-text-container pull-right">
+
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                                    <p>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                    </p>
+                            {% else %}
+                                <p class="header-link"><a href="{{path('fos_user_security_login')}}">{{ 'header.top.login'|trans({}, 'StageappBundle') }}</a>&nbsp;{{ 'header.top.or'|trans({}, 'StageappBundle') }}&nbsp;<a href="{{path('fos_user_registration_register')}}">{{ 'header.top.create'|trans({}, 'StageappBundle') }}</a></p>
+                            {% endif %}
+
+                        </div><!-- End .pull-right -->
+                    </div><!-- End .header-top-right -->
+                </div><!-- End .col-md-12 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End #header-top -->
+
+    <div id="inner-header">
+
+        <div id="main-nav-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 clearfix">
+                        <div id="menu-wrapper" class="clearfix">
+                            <div class="logo-container">
+                                <h1 class="logo clearfix">
+                                    <span>Responsive eCommerce Template</span>
+                                    <a href="index-2.html" title="Venedor eCommerce Template"><img src="{{ asset('bundles/stageapp/images/logo.png') }} " alt="Venedor Commerce Template" width="184" height="60"></a>
+                                </h1>
+                            </div><!-- End .logo-container -->
+                            <div id="menu-right-side" class="clerfix">
+
+                                <nav id="main-nav">
+                                    <div id="responsive-nav">
+                                        <div id="responsive-nav-button">
+                                            Menu <span id="responsive-nav-button-icon"></span>
+                                        </div><!-- responsive-nav-button -->
+                                    </div>
+                                    <ul class="menu clearfix">
+                                        <li>
+                                            <a class="active" href="index-2.html">{{ 'header.middle.Home'|trans({}, 'StageappBundle') }}</a>
+                                        </li>
+                                        <li class="mega-menu-container"><a href="#">{{ 'header.middle.Shop'|trans({}, 'StageappBundle') }}</a>
+                                        </li>
+                                        <li><a href="contact.html">{{ 'header.middle.Contactus'|trans({}, 'StageappBundle') }}</a></li>
+                                    </ul>
+
+                                </nav>
+                            </div><!-- End #menu-right-side -->
+                        </div><!-- End #menu-wrapper -->
+
+                    </div><!-- End .col-md-12 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </div><!-- End #nav -->
+    </div><!-- End #inner-header -->
+</header><!-- End #header -->

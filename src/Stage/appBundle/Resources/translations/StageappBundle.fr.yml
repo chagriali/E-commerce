@@ -1,0 +1,23 @@
+header: 
+  top:
+    MyWishlist: Ma liste d'envies
+    MyAccount: Mon compte
+    MyCart: Mon panier
+    Checkout: Valider
+    Welcome: Bienvenue Chez Venedor!
+    login: Identifiez-vous 
+    or: ou
+    create:  créez un compte
+  middle: 
+    Home: Acceuil
+    Shop: Boutique
+    Contactus: Contactez nous
+    Item : Article (s)
+    RecentlyItem: Article (s) récemment ajouté (s).
+    search: Chercher ici!
+footer:
+  titles:
+    Products: Nos Products
+    Info: Info pratique
+    Service: Service client
+    Payment: Paiment Sécurisé

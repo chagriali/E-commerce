@@ -1,0 +1,9 @@
+form:
+    sexe:
+        homme: 'Homme'
+        femme: 'Femme'
+    info:
+        nom: 'Nom'
+        prenom: 'Prenom'
+        tel: 'Téléphone'
+        adresse: 'Adresse'

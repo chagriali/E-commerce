@@ -1,0 +1,80 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+
+<div class="container" style="margin-top: 20px; margin-bottom: 30px">
+<div class="content">
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register' }}) }}
+
+
+    <h3>Sign Up</h3>
+        <p> Enter your personal details below: </p>
+        <!----- Email ---->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i><span class="input-text" style="margin-left: 10px">{{ form_label(form.email)}}*</span></span>
+            {{ form_widget(form.email,{'attr':{'class':'form-control input-lg' }}) }}
+        </div>
+        <!-- pass word ---->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i><span class="input-text" style="margin-left: 10px">{{ form_label(form.plainPassword.first)}}*</span></span>
+            {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control input-lg' }}) }}
+        </div>
+        <!-- pass word check ---->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-check"></i><span class="input-text" style="margin-left: 10px">{{ form_label(form.plainPassword.second)}}*</span></span>
+                    {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control input-lg' }}) }}
+                </div>
+            </div>
+        </div>
+
+
+        <!----- Nom ---->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i><span class="input-text" style="margin-left: 10px">{{ form_label(form.nom)}}*</span></span>
+                    {{ form_widget(form.nom,{'attr':{'class':'form-control input-lg' }}) }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i><span class="input-text" style="margin-left: 10px">{{ form_label(form.prenom)}}*</span></span>
+                    {{ form_widget(form.prenom,{'attr':{'class':'form-control input-lg' }}) }}
+                </div>
+            </div>
+        </div>
+
+
+        <!----- Tél ---->
+
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-phone"></i><span class="input-text" style="margin-left: 10px">{{ form_label(form.tel)}}*</span></span>
+            {{ form_widget(form.tel,{'attr':{'class':'form-control input-lg' }}) }}
+        </div>
+
+        <!----- adresse ---->
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-map-o"></i><span class="input-text" style="margin-left: 10px">{{ form_label(form.adresse.value)}}*</span></span>
+            {{ form_widget(form.adresse.value,{'attr':{'class':'form-control input-lg' }}) }}
+        </div>
+
+        
+
+        <!----- Sexe ---->
+        <div class="">
+            <label class="control-label visible-ie8 visible-ie9">{{ form.tel.vars.label }}</label>
+
+            {{form_row(form.sexe)}}
+        </div>
+
+    <button type="submit" class="btn green pull-right"> {{ 'registration.submit'|trans }} </button>
+
+    {{ form_end(form) }}
+
+</div>
+</div>

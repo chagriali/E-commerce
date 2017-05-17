@@ -1,0 +1,86 @@
+{% extends "StageappBundle::index.html.twig" %}
+
+
+
+
+
+{% block headers %}
+    <div id="glob">
+        {% set header = app.session.get('h') %}
+        <div id="site-header">
+        {% if header.Id == 1 %}
+            {{ include('StageappBundle:Headers:h1.html.twig') }}
+        {% endif %}
+
+        {% if header.Id == 2 %}
+            {{ include('StageappBundle:Headers:h2.html.twig') }}
+        {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div id="wrapper">
+        <section id="content">
+
+            <div id="slider-sequence" class="homeslider">
+                <div class="sequence-prev"></div><!-- End sequence-prev-->
+                <div class="sequence-next"></div><!-- End sequence-next-->
+                <ul class="sequence-canvas">
+                    <li class="sequence-slide1">
+                        <div class="sequencebg">
+                            <img src= " {{ asset('bundles/stageapp/images/homeslider/slide1.png') }} " alt="Slide 1 image" class="sequencebg-image">
+                        </div><!-- End .sequencebg -->
+                        <div class="sequence-container container">
+                            <img src="{{ asset('bundles/stageapp/images/homeslider/homeslider/slide1_1.png') }} images/homeslider/slide1_1.png" alt="Model 1" class="sequence-model">
+                            <div class="sequence-title">Special offer -25%</div>
+                            <div class="sequence-subtitle">Performance &amp; Design. Taken right to the edge.</div>
+                            <a href="#" class="btn btn-custom-2 btn-sequence">Learn More</a>
+                        </div><!-- End .sequence-container -->
+                    </li>
+
+                    <li class="sequence-slide2">
+                        <div class="sequencebg">
+                            <img src=" {{ asset('bundles/stageapp/images/homeslider/slide2.jpg') }}   " alt="Slide 2 image" class="sequencebg-image">
+                        </div><!-- End .sequencebg -->
+                        <div class="sequence-container container">
+                            <div class="sequence-price">$1150</div>
+                            <img src=" {{ asset('bundles/stageapp/images/images/slide2_2.png') }} " alt="Model 2" class="sequence-model">
+                            <img src=" {{ asset('bundles/stageapp/images/images/images/slide2_1.png') }}  " alt="Model 1" class="sequence-model2">
+                            <div class="sequence-title">The next big thing...</div>
+                            <div class="sequence-subtitle">Take, view and share photos with the 13MP camera and stunning 5" display.</div>
+                            <a href="#" class="btn btn-custom-2 btn-sequence">Learn More</a>
+                        </div><!-- End .sequence-container -->
+                    </li>
+
+
+                </ul>
+
+                <ul class="sequence-pagination">
+                    <li>Frame 1</li>
+                    <li>Frame 2</li>
+                    <li>Frame 3</li>
+                </ul>
+            </div><!-- End #slider-sequence -->
+        </section>
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+
+    <div id="globBot">
+        {% set footer = app.session.get('f') %}
+        <div id="site-footers">
+            {% if footer.Id == 1 %}
+                {{ include('StageappBundle:Footers:f1.html.twig') }}
+            {% endif %}
+
+            {% if footer.Id == 2 %}
+                {{ include('StageappBundle:Footers:f2.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

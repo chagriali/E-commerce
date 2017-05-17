@@ -1,0 +1,41 @@
+{% extends "StageappBundle::index.html.twig" %}
+
+
+
+
+{% block headers %}
+    <div id="glob">
+        {% set header = app.session.get('h') %}
+        <div id="site-header">
+            {% if header.Id == 1 %}
+                {{ include('StageappBundle:Headers:h1.html.twig') }}
+            {% endif %}
+
+            {% if header.Id == 2 %}
+                {{ include('StageappBundle:Headers:h2.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+{% block footer %}
+
+    <div id="globBot">
+        {% set footer = app.session.get('f') %}
+        <div id="site-footers">
+            {% if footer.Id == 1 %}
+                {{ include('StageappBundle:Footers:f1.html.twig') }}
+            {% endif %}
+
+            {% if footer.Id == 2 %}
+                {{ include('StageappBundle:Footers:f2.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+

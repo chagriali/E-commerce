@@ -1,0 +1,200 @@
+<header id="header">
+    <div id="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header-top-left">
+                        <ul id="top-links" class="clearfix">
+                            <li><a href="#" title="My Wishlist"><span class="top-icon top-icon-pencil"></span><span class="hide-for-xs">{{ 'header.top.MyWishlist'|trans({}, 'StageappBundle') }}</span></a></li>
+                            <li><a href="{{path('fos_user_profile_show')}}" title="My Account"><span class="top-icon top-icon-user"></span><span class="hide-for-xs">{{ 'header.top.MyAccount'|trans({}, 'StageappBundle') }}</span></a></li>
+                            <li><a href="cart.html" title="My Cart"><span class="top-icon top-icon-cart"></span><span class="hide-for-xs">{{ 'header.top.MyCart'|trans({}, 'StageappBundle') }}</span></a></li>
+                            <li><a href="checkout.html" title="Checkout"><span class="top-icon top-icon-check"></span><span class="hide-for-xs">{{ 'header.top.Checkout'|trans({}, 'StageappBundle') }}</span></a></li>
+                        </ul>
+                    </div><!-- End .header-top-left -->
+                    <div class="header-top-right">
+
+                        <div class="header-top-dropdowns pull-right">
+                            <div class="btn-group dropdown-money">
+                                <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                                    <span class="hide-for-xs">US Dollar</span><span class="hide-for-lg">$</span>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="#"><span class="hide-for-xs">Euro</span><span class="hide-for-lg">&euro;</span></a></li>
+                                    <li><a href="#"><span class="hide-for-xs">Pound</span><span class="hide-for-lg">&pound;</span></a></li>
+                                </ul>
+                            </div><!-- End .btn-group -->
+                            <div class="btn-group dropdown-language">
+                                {% set langues = app.session.get('langues') %}
+
+                                <button onclick="window.location.href='{{ path(app.session.get('url'), app.session.get('params')|merge({'_locale':  langues[0].loc     })) }}'" type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                                    {% for langue in langues %}
+                                        {% if langue.loc ==  app.request.get('_locale')  %}
+                                            <span class="flag-container"><img src="{{ asset('bundles/stageapp/images/'~ langue.name ~'-flag.png')}}" alt="flag of england"></span>
+                                            <span class="hide-for-xs">{{ langue.name}}</span>
+
+                                        {% endif %}
+                                    {% endfor %}
+                                </button>
+
+                                <ul class="dropdown-menu pull-right" role="menu">
+
+                                    {% for langue in langues  %}
+                                        {% if langue.loc != app.request.get('_locale')  %}
+                                        <li><a href="{{ path(app.session.get('url'), app.session.get('params')|merge({'_locale':  langues[0].loc     })) }}"><span class="sm-separator"><img src="{{ asset('bundles/stageapp/images/'~ langue.name ~'-flag.png') }}" alt="flag of germany"></span><span class="hide-for-xs">{{ langue.name }}</span></a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div><!-- End .btn-group -->
+                        </div><!-- End .header-top-dropdowns -->
+
+                        <div class="header-text-container pull-right">
+                            <p class="header-text">{{ 'header.top.Welcome'|trans({}, 'StageappBundle') }}</p>
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <p class="header-link">
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                                </p>
+                            {% else %}
+                                <p class="header-link"><a href="{{path('fos_user_security_login')}}">{{ 'header.top.login'|trans({}, 'StageappBundle') }}</a>&nbsp;{{ 'header.top.or'|trans({}, 'StageappBundle') }}&nbsp;<a href="{{path('fos_user_registration_register')}}">{{ 'header.top.create'|trans({}, 'StageappBundle') }}</a></p>
+                            {% endif %}
+
+                        </div><!-- End .pull-right -->
+                    </div><!-- End .header-top-right -->
+                </div><!-- End .col-md-12 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End #header-top -->
+
+    <div id="inner-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-5 col-xs-12 logo-container">
+                    <h1 class="logo clearfix">
+                        <span>Responsive eCommerce Template</span>
+                        <a href="index-2.html" title="Venedor eCommerce Template">
+                            <div class = "img_container">
+                                <img class="img_logo" src="{{ asset('bundles/stageapp/images/logo.png') }}" alt="Venedor Commerce Template" width="238" height="76">
+
+                            </div>
+                        </a>
+                    </h1>
+                </div><!-- End .col-md-5 -->
+                <div class="col-md-7 col-sm-7 col-xs-12 header-inner-right">
+
+                    <div class="header-box contact-infos pull-right">
+                        <ul>
+                            <li><span class="header-box-icon header-box-icon-skype"></span>venedor_support</li>
+                            <li><span class="header-box-icon header-box-icon-email"></span><a href="mailto:venedor@gmail.com">venedor@gmail.com</a></li>
+                        </ul>
+                    </div><!-- End .contact-infos -->
+
+                    <div class="header-box contact-phones pull-right clearfix">
+                        <span class="header-box-icon header-box-icon-earphones"></span>
+                        <ul class="pull-left">
+                            <li>+(404) 158 14 25 78</li>
+                            <li>+(404) 851 21 48 15</li>
+                        </ul>
+                    </div><!-- End .contact-phones -->
+
+                </div><!-- End .col-md-7 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+
+        <div id="main-nav-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 clearfix">
+
+                        <nav id="main-nav">
+                            <div id="responsive-nav">
+                                <div id="responsive-nav-button">
+                                    Menu <span id="responsive-nav-button-icon"></span>
+                                </div><!-- responsive-nav-button -->
+                            </div>
+                            <ul class="menu clearfix">
+                                <li>
+                                    <a class="active" href="index-2.html">{{ 'header.middle.Home'|trans({}, 'StageappBundle') }}</a>
+                                </li>
+                                <li class="mega-menu-container"><a href="{{ path('shop_route') }}">{{ 'header.middle.Shop'|trans({}, 'StageappBundle') }}</a>
+
+                                </li>
+
+
+
+                                <li><a id="test" href="contact.html">{{ 'header.middle.Contactus'|trans({}, 'StageappBundle') }}</a></li>
+                            </ul>
+
+                        </nav>
+
+                        <div id="quick-access">
+                            <div class="dropdown-cart-menu-container pull-right">
+                                <div class="btn-group dropdown-cart">
+                                    <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                                        <span class="cart-menu-icon"></span>
+                                        0 {{ 'header.middle.Item'|trans({}, 'StageappBundle') }} <span class="drop-price">- $0.00</span>
+                                    </button>
+
+                                    <div class="dropdown-menu dropdown-cart-menu pull-right clearfix" role="menu">
+                                        <p class="dropdown-cart-description">{{ 'header.middle.RecentlyItem'|trans({}, 'StageappBundle') }}.</p>
+                                        <ul class="dropdown-cart-product-list">
+                                            <li class="item clearfix">
+                                                <a href="#" title="Delete item" class="delete-item"><i class="fa fa-times"></i></a>
+                                                <a href="#" title="Edit item" class="edit-item"><i class="fa fa-pencil"></i></a>
+                                                <figure>
+                                                    <a href="product.html"></a>
+                                                </figure>
+                                                <div class="dropdown-cart-details">
+                                                    <p class="item-name">
+                                                        <a href="product.html">Cam Optia AF Webcam </a>
+                                                    </p>
+                                                    <p>
+                                                        1x
+                                                        <span class="item-price">$499</span>
+                                                    </p>
+                                                </div><!-- End .dropdown-cart-details -->
+                                            </li>
+                                            <li class="item clearfix">
+                                                <a href="#" title="Delete item" class="delete-item"><i class="fa fa-times"></i></a>
+                                                <a href="#" title="Edit item" class="edit-item"><i class="fa fa-pencil"></i></a>
+                                                <figure>
+                                                    <a href="product.html"></a>
+                                                </figure>
+                                                <div class="dropdown-cart-details">
+                                                    <p class="item-name">
+                                                        <a href="product.html">Iphone Case Cover Original</a>
+                                                    </p>
+                                                    <p>
+                                                        1x
+                                                        <span class="item-price">$499<span class="sub-price">.99</span></span>
+                                                    </p>
+                                                </div><!-- End .dropdown-cart-details -->
+                                            </li>
+                                        </ul>
+
+                                        <ul class="dropdown-cart-total">
+                                            <li><span class="dropdown-cart-total-title">Shipping:</span>$7</li>
+                                            <li><span class="dropdown-cart-total-title">Total:</span>$1005<span class="sub-price">.99</span></li>
+                                        </ul><!-- .dropdown-cart-total -->
+                                        <div class="dropdown-cart-action">
+                                            <p><a href="cart.html" class="btn btn-custom-2 btn-block">Cart</a></p>
+                                            <p><a href="checkout.html" class="btn btn-custom btn-block">Checkout</a></p>
+                                        </div><!-- End .dropdown-cart-action -->
+
+                                    </div><!-- End .dropdown-cart -->
+                                </div><!-- End .btn-group -->
+                            </div><!-- End .dropdown-cart-menu-container -->
+
+
+
+                        </div><!-- End #quick-access -->
+                    </div><!-- End .col-md-12 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </div><!-- End #nav -->
+    </div><!-- End #inner-header -->
+</header><!-- End #header -->
+

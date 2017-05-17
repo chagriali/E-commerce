@@ -1,0 +1,156 @@
+{% extends "StageappBundle::index.html.twig" %}
+
+
+
+
+{% block scss  %}
+    {{ template_gen.getTemplate() }}
+    {% set header = app.session.get('h') %}
+    {% if header.Id == 1 %}
+        <link id="header-css"  rel="stylesheet" href="{{ asset('bundles/stageapp/css/headers/h1.css') }}">
+    {% endif %}
+    {% if header.Id == 2 %}
+        <link id="header-css" rel="stylesheet" href="{{ asset('bundles/stageapp/css/headers/h2.css') }}">
+    {% endif %}
+
+    {% if header.Id == 3 %}
+        <link id="header-css" rel="stylesheet" href="{{ asset('bundles/stageapp/css/headers/h3.css') }}">
+    {% endif %}
+
+    {% set footer = app.session.get('f') %}
+    {% if footer.Id == 1 %}
+        <link id="footer-css"  rel="stylesheet" href="{{ asset('bundles/stageapp/css/footers/f1.css') }}">
+    {% endif %}
+    {% if footer.Id == 2 %}
+        <link id="footer-css"  rel="stylesheet" href="{{ asset('bundles/stageapp/css/footers/f2.css') }}">
+    {% endif %}
+
+{% endblock %}
+
+
+{% block headers %}
+    <div id="glob">
+        {% set header = app.session.get('h') %}
+        <div id="site-header">
+            {% if header.Id == 1 %}
+                {{ include('StageappBundle:Headers:h1.html.twig') }}
+            {% endif %}
+
+            {% if header.Id == 2 %}
+                {{ include('StageappBundle:Headers:h2.html.twig') }}
+            {% endif %}
+
+            {% if header.Id == 3 %}
+                {{ include('StageappBundle:Headers:h3.html.twig') }}
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+    <div class="md-margin"></div><!-- .space -->
+    <div class="category-item-container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="item">
+                    <div class="item-image-container">
+                        <figure>
+                            <a href="product.html">
+                                <img style="width: 212px; height: 307px;"  src="{{ asset("bundles/stageapp/images/recto-11593.png") }} " alt="item1" class="item-image">
+                                <img style="width: 212px; height: 307px;" src="{{ asset("bundles/stageapp/images/recto-11593-hover.png") }} " alt="item1  Hover" class="item-image-hover">
+                            </a>
+
+                        </figure>
+
+
+                    </div><!-- End .item-image -->
+                    <div class="item-meta-container">
+                        <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-result" data-result="70"></div>
+                            </div><!-- End .ratings -->
+                                                                <span class="ratings-amount">
+                                                                    3 Reviews
+                                                                </span>
+                        </div><!-- End .rating-container -->
+                        <h3 class="item-name"><a href="product.html">Carte de fidélité recto-verso</a></h3>
+                        <h4>100 à partir de 41.00 €</h4>
+                        <div class="item-action">
+                            <a href="#" class="item-add-btn">
+                                <span class="icon-cart-text">Add to Cart</span>
+                            </a>
+                            <div class="item-action-inner">
+                                <a href="#" class="icon-button icon-like">Favourite</a>
+                                <a href="#" class="icon-button icon-compare">Checkout</a>
+                            </div><!-- End .item-action-inner -->
+                        </div><!-- End .item-action -->
+                    </div><!-- End .item-meta-container -->
+                </div><!-- End .item -->
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="item">
+                    <div class="item-image-container">
+                        <figure>
+                            <a href="product.html">
+                                <img style="width: 212px; height: 307px;"  src="{{ asset("bundles/stageapp/images/recto-11362.png") }} " alt="item1" class="item-image">
+                                <img style="width: 212px; height: 307px;" src="{{ asset("bundles/stageapp/images/recto-11362-hover.png") }} " alt="item1  Hover" class="item-image-hover">
+                            </a>
+
+                        </figure>
+
+
+                    </div><!-- End .item-image -->
+                    <div class="item-meta-container">
+                        <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-result" data-result="70"></div>
+                            </div><!-- End .ratings -->
+                                                                <span class="ratings-amount">
+                                                                    3 Reviews
+                                                                </span>
+                        </div><!-- End .rating-container -->
+                        <h3 class="item-name"><a href="product.html">Porte-menu en polypro</a></h3>
+                        <h4>15 à partir de 463.26 €</h4>
+                        <div class="item-action">
+                            <a href="#" class="item-add-btn">
+                                <span class="icon-cart-text">Add to Cart</span>
+                            </a>
+                            <div class="item-action-inner">
+                                <a href="#" class="icon-button icon-like">Favourite</a>
+                                <a href="#" class="icon-button icon-compare">Checkout</a>
+                            </div><!-- End .item-action-inner -->
+                        </div><!-- End .item-action -->
+                    </div><!-- End .item-meta-container -->
+                </div><!-- End .item -->
+            </div>
+            </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+{% block footer %}
+
+    <div id="globBot">
+        {% set footer = app.session.get('f') %}
+        <div id="site-footers">
+            {% if footer.Id == 1 %}
+                {{ include('StageappBundle:Footers:f1.html.twig') }}
+            {% endif %}
+
+            {% if footer.Id == 2 %}
+                {{ include('StageappBundle:Footers:f2.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+

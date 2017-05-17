@@ -1,0 +1,95 @@
+{% extends '::index.html.twig' %}
+
+{% block scss  %}
+    {{ template_gen.getTemplate() }}
+    {% set header = app.session.get('h') %}
+    {% if header.Id == 1 %}
+        <link id="header-css"  rel="stylesheet" href="{{ asset('bundles/stageapp/css/headers/h1.css') }}">
+    {% endif %}
+    {% if header.Id == 2 %}
+        <link id="header-css" rel="stylesheet" href="{{ asset('bundles/stageapp/css/headers/h2.css') }}">
+    {% endif %}
+
+    {% if header.Id == 3 %}
+        <link id="header-css" rel="stylesheet" href="{{ asset('bundles/stageapp/css/headers/h3.css') }}">
+    {% endif %}
+
+    {% set footer = app.session.get('f') %}
+    {% if footer.Id == 1 %}
+        <link id="footer-css"  rel="stylesheet" href="{{ asset('bundles/stageapp/css/footers/f1.css') }}">
+    {% endif %}
+    {% if footer.Id == 2 %}
+        <link id="footer-css"  rel="stylesheet" href="{{ asset('bundles/stageapp/css/footers/f2.css') }}">
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+{% block headers %}
+    <div id="glob">
+        {% set header = app.session.get('h') %}
+        <div id="site-header">
+            {% if header.Id == 1 %}
+                {{ include('StageappBundle:Headers:h1.html.twig') }}
+            {% endif %}
+
+            {% if header.Id == 2 %}
+                {{ include('StageappBundle:Headers:h2.html.twig') }}
+            {% endif %}
+
+            {% if header.Id == 3 %}
+                {{ include('StageappBundle:Headers:h3.html.twig') }}
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block content %}
+        <!---
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% endif %}
+        </div>
+        --->
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+{% endblock %}
+
+
+{% block footer %}
+
+    <div id="globBot">
+        {% set footer = app.session.get('f') %}
+        <div id="site-footers">
+            {% if footer.Id == 1 %}
+                {{ include('StageappBundle:Footers:f1.html.twig') }}
+            {% endif %}
+
+            {% if footer.Id == 2 %}
+                {{ include('StageappBundle:Footers:f2.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

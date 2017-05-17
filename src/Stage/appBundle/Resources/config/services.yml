@@ -1,0 +1,7 @@
+services:
+#    stageapp.example:
+#        class: Stage\appBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    template_getter:
+        class: Stage\appBundle\GenericTemplate\Manager
+        arguments: ["@doctrine","@session"]
